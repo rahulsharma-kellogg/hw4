@@ -1,16 +1,18 @@
-<h1>Places</h1>
+<h1 class="mb-3">Places</h1>
 
 <% @user = User.find_by({"id" => session["user_id"]}) %>
 <% if @user != nil%>
-  <ul>
+  <p>
+    <a href="/places/new" class="btn btn-outline-dark fw-bold px-4 py-2">New place</a>
+  </p>
+  
+  <ul class="list-unstyled">
     <% for place in @places %>
-      <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+      <li class="mb-3"><a href="/places/<%= place["id"] %>" class="fs-4 fw-semibold text-dark"><%= place["name"] %></a></li>
     <% end %>
   </ul>
 
-  <p>
-    <a href="/places/new">New place</a>
-  </p>
+  
 <% else %>
   <p> 
     Please <a href="/login">log in</a> to view your travel log!
