@@ -1,10 +1,17 @@
 <h1>New Place</h1>
 
-<form action="/places" method="post">
-  <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
-  </p>
+<% @user = User.find_by({"id" => session["user_id"]}) %>
+<% if @user != nil %>
+  <form action="/places" method="post">
+    <p>
+      <label for="name_input">Name</label>
+      <input type="text" name="name" id="name_input">
+    </p>
 
-  <button>Save</button>
-</form>
+    <button>Save</button>
+  </form>
+<% else %>
+  <p> 
+    Please <a href="/login">log in</a> to add a new place to your travel log!
+  </p>
+<% end %>
